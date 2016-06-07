@@ -1,6 +1,7 @@
 import React from 'react';
 import { browserHistory } from 'react-router';
 import Auth from '../services/AuthService';
+import Materialize from 'materialize';
 
 class SignIn extends React.Component {
   constructor(props) {
