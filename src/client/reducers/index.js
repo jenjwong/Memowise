@@ -9,7 +9,8 @@ import {
   SIGN_OUT,
   ERR_FAILED_REQUEST,
   CREATE_DECK,
-  // CREATE_CARD,
+  CREATE_CARD
+  UPDATE_SCORE
 } from '../constants/actionTypes';
 
 import {
@@ -109,3 +110,13 @@ export const error = (state, action) => {
       return state || {};
   }
 };
+
+export const scoreTotal = (state, action) => {
+  switch (action.type) {
+    case UPDATE_SCORE: {
+      return action.currScore + action.rating;
+    }
+    default:
+      return state || {};
+  }
+}

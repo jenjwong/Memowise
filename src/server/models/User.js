@@ -18,15 +18,12 @@ const UserSchema = new mongoose.Schema({
       'Please make your password longer',
     ],
   },
-<<<<<<< dbb9d4d9dc61a668ae16e79bbb382bacd45277bc
   facebook: {
     id: String,
     token: String,
   },
-  score: Number,
-=======
   scoreTotal: Number,
->>>>>>> define receiveScore and updateScore
+
 }, { timestamps: true });
 
 UserSchema.pre('save', function hashPassword(next) {

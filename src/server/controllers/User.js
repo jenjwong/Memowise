@@ -5,3 +5,5 @@ const getScore = (req, res) => {
     return res.json(score);
   });
 };
+
+export default { getScore };
