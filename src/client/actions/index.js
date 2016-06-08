@@ -67,7 +67,6 @@ export const flipCard = () => ({ type: types.FLIP_CARD });
 
 export const savePlay = (play, rating) => {
   const payload = JSON.stringify({ ...play, rating });
-
   return dispatch => (
     fetch(`${url}/api/play`, {
       method: 'POST',
@@ -82,3 +81,11 @@ export const savePlay = (play, rating) => {
     .catch(err => dispatch(failedRequest(err)))
   );
 };
+
+export const updateScore = scoreTotal => ({ type: types.UPDATE_SCORE, data: scoreTotal });
+export const receiveScore = (userName, rating) => {
+  fetch(`${url}/api/user/score`)
+    .then( res => res.json())
+    .then(scoreTotal => dispatch(updateScore(scoreTotal)))
+    .catch(err => dispatch(failedRequest(err)));
+}
