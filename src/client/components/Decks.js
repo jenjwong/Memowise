@@ -1,5 +1,7 @@
 import React, { PropTypes } from 'react';
 import DeckItem from './DeckItem';
+import NewDeck from './NewDeck';
+import NewForm from './NewForm';
 
 const Decks = ({ decks }) => (
   <div className="container">
@@ -9,6 +11,8 @@ const Decks = ({ decks }) => (
         {decks.map((deck, idx) => <DeckItem key={idx} deck={deck} />)}
       </div>
     </div>
+    <NewDeck />
+    <NewForm />
   </div>
 );
 
