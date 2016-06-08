@@ -22,6 +22,7 @@ const UserSchema = new mongoose.Schema({
     id: String,
     token: String,
   },
+  score: Number,
 }, { timestamps: true });
 
 UserSchema.pre('save', function hashPassword(next) {
