@@ -8,6 +8,8 @@ import {
   SIGN_IN,
   SIGN_OUT,
   ERR_FAILED_REQUEST,
+  CREATE_DECK,
+  CREATE_CARD
 } from '../constants/actionTypes';
 
 import {
@@ -22,6 +24,18 @@ export const decks = (state, action) => {
     }
     default:
       return state || [];
+  }
+};
+
+export const createDeck = (state, action) => {
+  console.log(state, 'STATE');
+  console.log(action, 'ACTION');
+  switch (action.type) {
+    case CREATE_DECK: {
+      return action.data || state;
+    }
+    default:
+      return state || {};
   }
 };
 

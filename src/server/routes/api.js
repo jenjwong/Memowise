@@ -4,6 +4,7 @@ import { Router } from 'express';
 import decks from '../controllers/Decks';
 import plays from '../controllers/Plays';
 import auth from '../controllers/Auth';
+import createCard from '../controllers/Create';
 
 const router = new Router();
 
@@ -13,6 +14,9 @@ const router = new Router();
 router.route('/api/decks').get(auth.checkAuthServer, decks.findAll);
 router.route('/api/card').post(auth.checkAuthServer, decks.findNextCard);
 router.route('/api/progress').post(auth.checkAuthServer, decks.progress);
+
+router.route('/api/create-card').post(auth.checkAuthServer, createCard.createCard);
+router.route('/api/create-deck').post(auth.checkAuthServer, createCard.createDeck);
 
 /*
  * Plays
