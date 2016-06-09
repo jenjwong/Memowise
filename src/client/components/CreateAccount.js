@@ -4,6 +4,7 @@ import { browserHistory } from 'react-router';
 import { signIn } from '../actions';
 import $ from 'jquery';
 import Auth from '../services/AuthService';
+import Materialize from 'materialize';
 
 const mapStateToProps = props => (props);
 const mapDispatchToProps = (dispatch) => ({

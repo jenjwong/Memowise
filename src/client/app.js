@@ -21,6 +21,8 @@ import SignOut from './containers/SignOut';
 import Profile from './containers/Profile';
 import Dashboard from './containers/Dashboard';
 import StudyDeck from './containers/StudyDeck';
+import CreateDeck from './containers/CreateDeck';
+import CreateCard from './containers/CreateCard';
 import { verifyAuthentication, fetchDecks } from './actions';
 
 // services
@@ -56,6 +58,8 @@ render(
         <Route path="/sign-out" component={SignOut} />
         <Route path="/profile" component={Profile} onEnter={isAuthorized} />
         <Route path="/dashboard" component={Dashboard} onEnter={isAuthorized} />
+        <Route path="/create-card" component={CreateCard} onEnter={isAuthorized} />
+        <Route path="/create-deck" component={CreateDeck} onEnter={isAuthorized} />
         <Route path="/decks/:deckId/study" component={StudyDeck} onEnter={isAuthorized} />
       </Route>
     </Router>
