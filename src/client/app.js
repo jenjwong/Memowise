@@ -61,9 +61,10 @@ render(
         <Route path="/create-card" component={CreateCard} onEnter={isAuthorized} />
         <Route path="/create-deck" component={CreateDeck} onEnter={isAuthorized} />
         <Route path="/decks/:deckId/study" component={StudyDeck} onEnter={isAuthorized} />
+
       </Route>
-    </Router>
-  </Provider>,
+    </Router> 
+    </Provider>,
   document.getElementById('app')
 );
 

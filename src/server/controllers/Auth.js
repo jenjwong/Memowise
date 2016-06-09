@@ -77,4 +77,17 @@ const signOut = (req, res) => {
   res.redirect('/');
 };
 
-export default { createAccount, signIn, verify, checkAuthorized, checkAuthServer, signOut };
+//Facebook sign in 
+const authFacebook = (req, res, next) => {
+  passport.authenticate('facebook')(req, res, next);
+};
+
+const afterAuthFB = (req, res, next) => {
+  passport.authenticate('facebook', {
+    successRedirect : '/dashboard',
+    failureRedirect : '/sign-in'
+  })(req, res, next);
+};
+
+
+export default { createAccount, signIn, verify, checkAuthorized, checkAuthServer, signOut, authFacebook, afterAuthFB };

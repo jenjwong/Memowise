@@ -1,6 +1,9 @@
 import passport from 'passport';
-import { Strategy } from 'passport-local';
+import { Strategy as LocalStrategy } from 'passport-local';
+import { Strategy as FacebookStrategy } from 'passport-facebook';
 import User from './models/User';
+
+import authorizeFacebook from './config/authorizeFacebook.js';
 
 const oid = '_id';
 
@@ -17,7 +20,7 @@ export default () => {
     });
   });
 
-  passport.use(new Strategy({
+  passport.use(new LocalStrategy({
     usernameField: 'email',
     passwordField: 'password',
   },
@@ -44,4 +47,21 @@ export default () => {
         });
       });
     }));
-};
+
+  passport.use(new FacebookStrategy({
+    
+    clientID : authorizeFacebook.facebookAuth.clientID,
+    clientSecret    : authorizeFacebook.facebookAuth.clientSecret,
+    callbackURL     : authorizeFacebook.facebookAuth.callbackURL
+
+  },
+  (token, refreshToken, profile, done) => {
+      console.log("Got something back from Facebook outside of function");
+
+    process.nextTick(function() {
+      console.log("Got something back from Facebook");
+      
+    });
+  }));
+}
+

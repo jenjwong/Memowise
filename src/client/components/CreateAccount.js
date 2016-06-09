@@ -5,7 +5,6 @@ import { signIn } from '../actions';
 import $ from 'jquery';
 import Materialize from 'materialize';
 import Auth from '../services/AuthService';
-import Materialize from 'materialize';
 
 const mapStateToProps = props => (props);
 const mapDispatchToProps = (dispatch) => ({
@@ -63,6 +62,12 @@ class CreateAccount extends React.Component {
         .catch(this.handleError);
     })
     .fail(err => this.handleError(err));
+  }
+
+  facebookAuth(event) {
+    $.get('/api/auth/facebook', () => {
+
+    });
   }
 
   render() {
@@ -124,6 +129,15 @@ class CreateAccount extends React.Component {
               </div>
             </div>
           </form>
+            <div
+              className="fb-like"
+              data-share="true"
+              data-width="450"
+              data-show-faces="true">
+                <button type="submit" className="btn waves-effect waves-teal">
+                  <a href="/api/auth/facebook"><img className="fb-button" src="http://i.imgur.com/hPCWQAc.png"/></a>
+                </button>
+            </div>
         </div>
       </div>
     );
