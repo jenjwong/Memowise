@@ -13,8 +13,7 @@ const router = new Router();
 /*
  * User
  */
-router.route('/api/user/score').get(auth.checkAuthServer, user.getScore);
-
+router.route('/api/user/score').get( user.updateScore);
 /*
  * Decks
  */

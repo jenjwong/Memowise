@@ -83,18 +83,26 @@ export const savePlay = (play, rating) => {
 };
 
 export const updateScore = ({ score, rating }) => ({ type: types.UPDATE_SCORE, data: { score, rating } });
-export const receiveScore = (rating) => {
+export const sendScore = (rating) => {
+  const payload = JSON.stringify({ rating });
   return dispatch => (  
     fetch(`${url}/api/user/score`, {
       method: 'GET',
+      headers: {
+        'Content-type': 'application/json',
+        'Content-length': payload.length,
+      },
       credentials: 'same-origin',
+      body:payload,
     })
       .then(res =>  res.json())
       .then(currScore => {
         var score = currScore.scoreTotal;
         console.log ( 'currScore - ', score, 'rating - ', rating);
-        dispatch(updateScore({ score, rating }))
+        dispatch(updateScore({ score, rating }));
       })
       .catch(err => dispatch(failedRequest(err)))
     );
 }
+
+
