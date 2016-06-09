@@ -11,6 +11,7 @@ import {
   CREATE_DECK,
   CREATE_CARD
   UPDATE_SCORE
+  UPDATE_SCORE,
 } from '../constants/actionTypes';
 
 import {
@@ -114,7 +115,8 @@ export const error = (state, action) => {
 export const scoreTotal = (state, action) => {
   switch (action.type) {
     case UPDATE_SCORE: {
-      return action.data.score + action.data.rating;
+      console.log('current score of user = ', action.data.score );
+      return action.data.score;
     }
     default:
       return state || {};

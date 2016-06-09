@@ -11,6 +11,16 @@ const updateScore = (req, res, next) => {
       if (err) { 
         return next(err);
       }
+    })
+    .then(user => {
+      console.log ('user score in updateScore on server is = ', user.scoreTotal);
+      res.json(user.scoreTotal);
+    })
+    .catch(error => {
+      res
+        .status(500)
+        .type('json')
+        .json({ error });
     });
   });
 };

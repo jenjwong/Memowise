@@ -31,7 +31,7 @@ UserSchema.pre('save', function hashPassword(next) {
   return cipher(this.password, 5).bind(this)
     .then(hash => {
       this.password = hash;
-      console.log('current user score is = ', this.scoreTotal);
+      console.log('user score in databse pre-save is = ', this.scoreTotal);
       next();
     });
 });
