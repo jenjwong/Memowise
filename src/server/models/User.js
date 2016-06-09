@@ -32,6 +32,7 @@ UserSchema.pre('save', function hashPassword(next) {
     .then(hash => {
       this.password = hash;
       this.scoreTotal = 0;
+      console.log('user created with initial score 0');
       next();
     });
 });

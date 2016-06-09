@@ -91,7 +91,7 @@ export const receiveScore = (userName, rating) => {
   })
     .then( res =>  { 
       res.json();
-      console.log ('response', res);
+      console.log ('response is - ', res);
     })
     .then(currScore => dispatch(updateScore(currScore, rating)))
     .catch(err => dispatch(failedRequest(err)));
