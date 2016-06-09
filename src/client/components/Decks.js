@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react';
 import DeckItem from './DeckItem';
 
-
 const Decks = ({ decks }) => (
   <div className="container">
     <h4 className="center grey-text text-darken-4"> Decks </h4>

@@ -1,10 +1,9 @@
-import Deck from '../models/Deck';
 import cardMaker from '../services/CardMaker';
 
 const createCard = (req, res) => {
   cardMaker.makeCard(req)
   .then(newCard => {
-    var created = newCard.toObject();
+    const created = newCard.toObject();
 
     res
       .status(201)
@@ -19,11 +18,9 @@ const createCard = (req, res) => {
 };
 
 const createDeck = (req, res) => {
-  console.log('controller made deck', req.body);
   cardMaker.makeDeck(req)
   .then(newDeck => {
-    var created = newDeck.toObject();
-    console.log(created, 'CREATED!!!')
+    const created = newDeck.toObject();
     res
       .status(201)
       .type('json')

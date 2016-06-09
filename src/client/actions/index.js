@@ -10,15 +10,6 @@ export const signIn = user => ({ type: types.SIGN_IN, data: user });
 
 export const signOut = () => ({ type: types.SIGN_OUT });
 
-
-// var const verifyAuthentication = function() {
-//   return function(dispatch) {
-//     Auth.verify()
-//     .then()
-//     .catch()
-//   }
-// }
-
 export const verifyAuthentication = () => (
   dispatch => {
     Auth.verify()

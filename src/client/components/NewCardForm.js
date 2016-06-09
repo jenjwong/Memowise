@@ -1,10 +1,9 @@
-import React, {Component} from 'react';
+import React from 'react';
 import $ from 'jquery';
 
 class NewCardForm extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
     };
   }
@@ -17,24 +16,20 @@ class NewCardForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    var question = this.refs.Question.value.trim();
-    var answer = this.refs.Answer.value.trim();
-    var explanation = this.refs.Explantion.value.trim();
+    let question = this.refs.Question.value.trim();
+    let answer = this.refs.Answer.value.trim();
+    let explanation = this.refs.Explantion.value.trim();
 
-    var newCard = {
+    let newCard = {
       question: question,
       answer: answer,
       explanation: explanation,
-      deckId: this.props.createDeck
+      deckId: this.props.createDeck,
     };
-
-    console.log(this.props.createDeck, 'createDeck');
 
     this.clearForm();
 
     $.post('/api/create-card', newCard, (res) => {
-      console.log('sucessful post to server');
-      console.log(res);
     })
     .fail(err => this.handleError(err));
   }
@@ -51,13 +46,8 @@ class NewCardForm extends React.Component {
   }
 }
 
-NewCardForm.propTypes = {
-//nameOfProp: React.propTypes.string,
-//nameOfProp: React.propTypes.number.isRequired
-}
-
 NewCardForm.defaultProps = {
-//nameOfProp: 'this is the default text yay!';
-}
+  createDeck: '',
+};
 
 export default NewCardForm;

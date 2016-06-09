@@ -28,8 +28,6 @@ export const decks = (state, action) => {
 };
 
 export const createDeck = (state, action) => {
-  console.log(state, 'STATE');
-  console.log(action, 'ACTION');
   switch (action.type) {
     case CREATE_DECK: {
       return action.data || state;
