@@ -5,8 +5,15 @@ import decks from '../controllers/Decks';
 import plays from '../controllers/Plays';
 import auth from '../controllers/Auth';
 import createCard from '../controllers/Create';
+import user from '../controllers/User';
+
 
 const router = new Router();
+
+/*
+ * User
+ */
+router.route('/api/user/score').get(auth.checkAuthServer, user.getScore);
 
 /*
  * Decks
