@@ -35,6 +35,7 @@ class StudyDeck extends React.Component {
   handlePlay(play, rank) {
     ReactDOM.findDOMNode(this.refs.contain).focus();
     this.props.savePlay(play, rank)
+      .then(() => this.props.receiveScore)
       .then(() => this.loadCard());
   }
 
@@ -158,6 +159,7 @@ StudyDeck.propTypes = {
   flipCard: PropTypes.func.isRequired,
   startPlay: PropTypes.func.isRequired,
   savePlay: PropTypes.func.isRequired,
+  receiveScore: PropTypes.func.isRequired,
 };
 
 export default StudyDeck;
