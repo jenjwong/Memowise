@@ -87,7 +87,7 @@ export const sendScore = (rating) => {
   const payload = JSON.stringify({ rating });
   return dispatch => (  
     fetch(`${url}/api/user/score`, {
-      method: 'GET',
+      method: 'POST',
       headers: {
         'Content-type': 'application/json',
         'Content-length': payload.length,
