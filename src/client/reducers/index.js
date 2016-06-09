@@ -114,6 +114,7 @@ export const error = (state, action) => {
 export const scoreTotal = (state, action) => {
   switch (action.type) {
     case UPDATE_SCORE: {
+      console.log('updated score is - ', action.currScore + action.rating);
       return action.currScore + action.rating;
     }
     default:

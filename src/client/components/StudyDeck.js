@@ -10,6 +10,7 @@ class StudyDeck extends React.Component {
     this.loadCard = this.loadCard.bind(this);
     this.handlePlay = this.handlePlay.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
+
   }
 
   componentWillMount() {
@@ -34,8 +35,8 @@ class StudyDeck extends React.Component {
 
   handlePlay(play, rank) {
     ReactDOM.findDOMNode(this.refs.contain).focus();
+    this.props.receiveScore(rank);
     this.props.savePlay(play, rank)
-      .then(() => this.props.receiveScore)
       .then(() => this.loadCard());
   }
 
