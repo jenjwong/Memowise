@@ -6,6 +6,8 @@ const updateScore = (req, res, next) => {
     if (err) {
       return next(err);
     }
+    //console.log('user', user);
+    //console.log(typeof req.body.rating);
     user.scoreTotal += req.body.rating;
     user.save(function(err) {
       if (err) { 
@@ -13,7 +15,7 @@ const updateScore = (req, res, next) => {
       }
     })
     .then(user => {
-      console.log ('user score in updateScore on server is = ', user.scoreTotal);
+      //console.log ('user score in updateScore on server is = ', user.scoreTotal);
       res.json(user.scoreTotal);
     })
     .catch(error => {
