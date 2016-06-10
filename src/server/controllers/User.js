@@ -1,13 +1,11 @@
 import User from '../models/User';
+import Levels from '../models/Levels';
 
 const updateScore = (req, res, next) => {
-  //console.log('req.body.rating is - ', req.body.rating);
   User.findOne({ _id: req.user._id }, function(err, user) {
     if (err) {
       return next(err);
     }
-    //console.log('user', user);
-    //console.log(typeof req.body.rating);
     user.scoreTotal += req.body.rating;
     user.save(function(err) {
       if (err) { 
@@ -15,7 +13,6 @@ const updateScore = (req, res, next) => {
       }
     })
     .then(user => {
-      //console.log ('user score in updateScore on server is = ', user.scoreTotal);
       res.json(user.scoreTotal);
     })
     .catch(error => {
@@ -27,4 +24,27 @@ const updateScore = (req, res, next) => {
   });
 };
 
-export default { updateScore };
+const updateLevel = (req, res, next) => {
+  Levels.findOne({ userId: req.user._id, deckId: req.body.deckId }, function(err, record) {
+    if (err) {
+      return next(err);
+    }
+    if (record) {
+      record.score += req.body.rating;
+      console.log ('record is - ', record);
+      record.level = Math.floor(score/10);
+      record.save(function(err) {
+        if (err) { 
+          return next(err);
+        }
+      });
+    } else {
+      
+      console.log('new record created');
+    }
+    
+    
+  });
+};
+
+export default { updateScore, updateLevel };

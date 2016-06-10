@@ -36,6 +36,7 @@ class StudyDeck extends React.Component {
     ReactDOM.findDOMNode(this.refs.contain).focus();
     this.props.receiveScore(rank);
     this.props.sendScore(rank);
+    this.props.checkLevel(this.props.deck._id, rank);
     this.props.savePlay(play, rank)
       .then(() => this.loadCard());
   }
@@ -161,6 +162,7 @@ StudyDeck.propTypes = {
   startPlay: PropTypes.func.isRequired,
   savePlay: PropTypes.func.isRequired,
   sendScore: PropTypes.func.isRequired,
+  checkLevel: PropTypes.func.isRequired,
 };
 
 export default StudyDeck;

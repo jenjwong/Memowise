@@ -25,7 +25,7 @@ import CreateDeck from './containers/CreateDeck';
 import CreateCard from './containers/CreateCard';
 import Scoreboard from './containers/Scoreboard';
 import Score from './containers/Score';
-import { verifyAuthentication, fetchDecks, sendScore } from './actions';
+import { verifyAuthentication, fetchDecks, sendScore, checkLevel } from './actions';
 
 // services
 import Auth from './services/AuthService';
@@ -73,6 +73,7 @@ render(
 
 if (DEBUG) {
   store.subscribe(() => window.console.log(store.getState()));
+  //store.subscribe(() => console.log(store.getState()));
 }
 
 store.dispatch(verifyAuthentication());
