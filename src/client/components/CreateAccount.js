@@ -65,8 +65,7 @@ class CreateAccount extends React.Component {
   }
 
   facebookAuth(event) {
-    $.get('/api/auth/facebook', () => {
-
+    $.get('/api/auth/facebook', (err) => {
     });
   }
 
