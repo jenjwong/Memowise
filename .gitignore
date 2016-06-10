@@ -40,4 +40,4 @@ bower_components/
 .gitaliases
 
 # Facebook OAuth keys
-authorizeFacebook.js
+src/server/config/authorizeFacebook.js
