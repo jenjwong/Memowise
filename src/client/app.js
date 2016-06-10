@@ -25,7 +25,7 @@ import CreateDeck from './containers/CreateDeck';
 import CreateCard from './containers/CreateCard';
 import Scoreboard from './containers/Scoreboard';
 import Score from './containers/Score';
-import { verifyAuthentication, fetchDecks } from './actions';
+import { verifyAuthentication, fetchDecks, sendScore } from './actions';
 
 // services
 import Auth from './services/AuthService';
@@ -77,6 +77,7 @@ if (DEBUG) {
 
 store.dispatch(verifyAuthentication());
 store.dispatch(fetchDecks());
+store.dispatch(sendScore(0));
 
 // just for inspection
 window.store = store;

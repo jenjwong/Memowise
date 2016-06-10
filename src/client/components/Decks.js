@@ -2,7 +2,10 @@ import React, { PropTypes } from 'react';
 import DeckItem from './DeckItem';
 import { browserHistory } from 'react-router';
 
-const Decks = ({ decks }) => (
+import Score from '../containers/Score';
+
+
+const Decks = ({ decks, score }) => (
   <div className="container">
     <h4 className="center grey-text text-darken-4"> Decks </h4>
     <div className="card-list">
@@ -26,6 +29,7 @@ const Decks = ({ decks }) => (
         </div>
       </div>
     </div>
+    <Score />
   </div>
 );
 

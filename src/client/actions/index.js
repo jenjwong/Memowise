@@ -82,7 +82,7 @@ export const savePlay = (play, rating) => {
   );
 };
 
-export const updateScore = ({ score }) => ({ type: types.UPDATE_SCORE, data: { score } });
+export const updateScore = (score) => ({ type: types.UPDATE_SCORE, data: score  });
 export const sendScore = (rating) => {
   const payload = JSON.stringify({ rating });
   return dispatch => (  
@@ -98,7 +98,7 @@ export const sendScore = (rating) => {
       .then(res =>  res.json())
       .then(score => {
         console.log ('rating - ', rating);
-        dispatch(updateScore({ score }));
+        dispatch(updateScore(score));
       })
       .catch(err => dispatch(failedRequest(err)))
     );
