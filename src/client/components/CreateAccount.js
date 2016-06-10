@@ -128,15 +128,7 @@ class CreateAccount extends React.Component {
               </div>
             </div>
           </form>
-            <div
-              className="fb-like"
-              data-share="true"
-              data-width="450"
-              data-show-faces="true">
-                <button type="submit" className="btn waves-effect waves-teal">
-                  <a href="/api/auth/facebook"><img className="fb-button" src="http://i.imgur.com/hPCWQAc.png"/></a>
-                </button>
-            </div>
+          
         </div>
       </div>
     );
