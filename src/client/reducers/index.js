@@ -114,7 +114,6 @@ export const error = (state, action) => {
 export const score = (state, action) => {
   switch (action.type) {
     case UPDATE_SCORE: {
-      console.log('current score of user = ', action.data );
       return action.data;
     }
     default:
