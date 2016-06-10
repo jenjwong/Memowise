@@ -38,3 +38,6 @@ bower_components/
 
 # Local aliases
 .gitaliases
+
+# Facebook OAuth keys
+src/server/config/authorizeFacebook.js
