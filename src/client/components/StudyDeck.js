@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import ReactDOM from 'react-dom';
 import { browserHistory } from 'react-router';
 import ReactMarkdown from 'react-markdown';
 import { GREAT, OKAY, BAD } from '../constants/play';
@@ -8,20 +9,56 @@ class StudyDeck extends React.Component {
     super(props);
     this.loadCard = this.loadCard.bind(this);
     this.handlePlay = this.handlePlay.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
   componentWillMount() {
     this.loadCard();
   }
 
+  componentDidMount() {
+    ReactDOM.findDOMNode(this.refs.contain).focus();
+  }
+
+  componentDidUpdate() {
+    ReactDOM.findDOMNode(this.refs.contain).focus();
+  }
+
   loadCard() {
+    if (this.refs.contain) {
+      ReactDOM.findDOMNode(this.refs.contain).focus();
+    }
     this.props.fetchCard(this.props.deck._id)
       .then(({ data }) => this.props.startPlay(data._id, data.deckId));
   }
 
   handlePlay(play, rank) {
+    ReactDOM.findDOMNode(this.refs.contain).focus();
     this.props.savePlay(play, rank)
       .then(() => this.loadCard());
+  }
+
+  handleKeyPress(e) {
+    const { play } = this.props;
+    switch (e.keyCode) {
+      case 32: // space
+        this.props.flipCard();
+        break;
+      case 37: // left
+        this.handlePlay(play, BAD);
+        break;
+      case 38: // up
+        this.props.flipCard();
+        break;
+      case 39: // right
+        this.handlePlay(play, GREAT);
+        break;
+      case 40: // down
+        this.handlePlay(play, OKAY);
+        break;
+      default:
+        window.console.log('NOTHING?!');
+    }
   }
 
   showCardFront() {
@@ -77,6 +114,23 @@ class StudyDeck extends React.Component {
             >
               <i className="material-icons">thumb_up</i>
             </button>
+            <div className="flashcard-controls tooltip lighten-3">
+              <i className="small material-icons">keyboard_hide</i>
+              <span className="tooltiptext">
+                <div className="tooltip-line">
+                  <i className="material-icons">arrow_forward</i><span className="span-text"> for  </span><i className="material-icons">thumb_up</i>
+                </div>
+                <div className="tooltip-line">
+                  <i className="material-icons">arrow_downward</i><span className="span-text"> for  </span><i className="material-icons">help</i>
+                </div>
+                <div className="tooltip-line">
+                  <i className="material-icons">arrow_back</i><span className="span-text"> for  </span><i className="material-icons">thumb_down</i>
+                </div>
+                <div className="tooltip-line">
+                  <i className="material-icons">space_bar</i><span className="span-text"> for  </span><i className="material-icons">skip_next</i>
+                </div>
+              </span>
+            </div>
           </div>
         </div>
       </div>
@@ -86,7 +140,7 @@ class StudyDeck extends React.Component {
   render() {
     const { play: { side }, deck } = this.props;
     return (
-      <div className="container">
+      <div ref="contain" tabIndex={0} className="container flash-container" onKeyUp={this.handleKeyPress}>
         <h2 className="center grey-text text-darken-4">{deck.name}</h2>
         <div className="medium center">
           {!side ? this.showCardFront() : this.showCardBack()}
