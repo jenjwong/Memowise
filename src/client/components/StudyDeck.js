@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import ReactDOM from 'react-dom';
 import { browserHistory } from 'react-router';
 import ReactMarkdown from 'react-markdown';
 import { GREAT, OKAY, BAD } from '../constants/play';
@@ -8,20 +9,67 @@ class StudyDeck extends React.Component {
     super(props);
     this.loadCard = this.loadCard.bind(this);
     this.handlePlay = this.handlePlay.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
   componentWillMount() {
     this.loadCard();
   }
 
+  componentDidMount() {
+    ReactDOM.findDOMNode(this.refs.contain).focus();
+  }
+
+  componentDidUpdate() {
+    ReactDOM.findDOMNode(this.refs.contain).focus();
+  }
+
   loadCard() {
+    if (this.refs.contain) {
+      ReactDOM.findDOMNode(this.refs.contain).focus();
+    }
     this.props.fetchCard(this.props.deck._id)
       .then(({ data }) => this.props.startPlay(data._id, data.deckId));
   }
 
   handlePlay(play, rank) {
+    ReactDOM.findDOMNode(this.refs.contain).focus();
     this.props.savePlay(play, rank)
       .then(() => this.loadCard());
+  }
+
+  handleKeyPress(e) {
+    window.console.log(this.props, '<<<<<< props');
+    const { card: { answer }, play } = this.props;
+    window.console.log(play, '<<< play');
+    switch (e.keyCode) {
+      case 32: // space
+        window.console.log('SPACE');
+        this.props.flipCard();
+        break;
+      case 37:
+        window.console.log('LEFT'); // left arrow
+        this.handlePlay(play, BAD);
+        break;
+      case 38:
+        window.console.log('UP'); // up arrow
+        this.props.flipCard();
+        break;
+      case 39:
+        window.console.log('RIGHT'); // right arrow
+        this.handlePlay(play, GREAT);
+        break;
+      case 40:
+        window.console.log('DOWN'); // down arrow
+        this.handlePlay(play, OKAY);
+        break;
+      default:
+        window.console.log('NOTHING?!');
+    }
+  }
+
+  handleFocus() {
+    window.console.log('Container is focused');
   }
 
   showCardFront() {
@@ -86,7 +134,7 @@ class StudyDeck extends React.Component {
   render() {
     const { play: { side }, deck } = this.props;
     return (
-      <div className="container">
+      <div ref="contain" key="contain1" tabIndex={0} className="container" onFocus={this.handleFocus} onKeyUp={this.handleKeyPress}>
         <h2 className="center grey-text text-darken-4">{deck.name}</h2>
         <div className="medium center">
           {!side ? this.showCardFront() : this.showCardBack()}
