@@ -5,7 +5,6 @@ import { signIn } from '../actions';
 import $ from 'jquery';
 import Materialize from 'materialize';
 import Auth from '../services/AuthService';
-import Materialize from 'materialize';
 
 const mapStateToProps = props => (props);
 const mapDispatchToProps = (dispatch) => ({
