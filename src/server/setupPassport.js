@@ -13,7 +13,6 @@ export default () => {
 
   // Deserialize sessions
   passport.deserializeUser((id, done) => {
-    console.log('Hi im in dcereal');
     User.findOne({
       _id: id,
     }, '-password', (err, user) => {
