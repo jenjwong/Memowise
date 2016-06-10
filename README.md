@@ -132,6 +132,22 @@ $ npm run coverage
 ```
 Opens code coverage report in browser.
 
+## Facebook Config File
+Make sure this path exists: /src/server/config/authorizeFacebook.js
+Below is how the authorizeFacebook.js file should look:
+```sh
+module.exports = {
+  'facebookAuth' : {
+      'clientID'      : 'your-secret-clientID-here', // your App ID
+      'clientSecret'  : 'your-client-secret-here', // your App Secret
+      'callbackURL'   : 'http://localhost:3000/auth/facebook/callback'
+  },
+}; 
+```
+Make sure this path exists: /src/server/config/authorizeFacebook.js
+Fill out the clientID, clientSecret, callbackURL in authorizeFacebook.js by going to <a href="https://developers.facebook.com/">Facebook Developer Portal</a> and creating your own app.
+
+
 ## Roadmap
 
 [![Stories in Ready](https://badge.waffle.io/wonky-mongoose/wonky-mongoose.svg?label=ready&title=Ready)](http://waffle.io/wonky-mongoose/wonky-mongoose)
