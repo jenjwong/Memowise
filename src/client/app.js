@@ -24,6 +24,7 @@ import StudyDeck from './containers/StudyDeck';
 import CreateDeck from './containers/CreateDeck';
 import CreateCard from './containers/CreateCard';
 import Scoreboard from './containers/Scoreboard';
+import Score from './containers/Score';
 import { verifyAuthentication, fetchDecks } from './actions';
 
 // services

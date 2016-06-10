@@ -15,3 +15,4 @@ export const SIGN_OUT = 'SIGN_OUT';
 export const ERR_FAILED_REQUEST = 'ERR_FAILED_REQUEST';
 
 export const UPDATE_SCORE = 'UPDATE_SCORE';
+//export const SHOW_SCORE = 'SHOW_SCORE';

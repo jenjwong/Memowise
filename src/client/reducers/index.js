@@ -9,8 +9,7 @@ import {
   SIGN_OUT,
   ERR_FAILED_REQUEST,
   CREATE_DECK,
-  CREATE_CARD
-  UPDATE_SCORE
+  CREATE_CARD,
   UPDATE_SCORE,
 } from '../constants/actionTypes';
 
