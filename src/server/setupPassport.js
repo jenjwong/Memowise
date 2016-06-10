@@ -13,6 +13,7 @@ export default () => {
 
   // Deserialize sessions
   passport.deserializeUser((id, done) => {
+    console.log('Hi im in dcereal');
     User.findOne({
       _id: id,
     }, '-password', (err, user) => {
@@ -60,31 +61,38 @@ export default () => {
     (token, refreshToken, profile, done) => {
       console.log("this is profile before nextTick", profile);
       process.nextTick(function() {
+        console.log('Next tick function');
         User.findOne({ 'facebook.id' : profile.id }, function(err, user) {
-          if (err) 
+          console.log('CREATED');
+          if (err) {
+            console.log('There is an error', err);
             return done(err);
+          }
+            
           if (user) {
+            console.log('I EXIST', user);
             return done(null, user);
           } else {
+            console.log('STARTED TO CREATE THE USER');
             return User.create({
+              name: profile.name.givenName + ' ' + profile.name.familyName,
+              email: profile.emails[0].value,
+              password: 'thisiforfacebooklogin',
               facebook: {
                 id: profile.id,
-                token: token,
-                name: profile.name.givenName + ' ' + profile.name.familyName,
-                email: profile.emails[0].value
+                token: token
               }
             }).then(user => {
               const created = user.toObject();
+              console.log('CREATE THIS', user);
               delete created.password;
-              res.status(201).json(created);
+              return done(null, created);
             })
             .catch(error => {
-              res
-                .status(500)
-                .type('json')
-                .json({ error });
+              console.log('THERE IS AN ERROR', error);
+              return done(error);
             });
-          });
+          };
             // var newUser = new User();
             // newUser.facebook = {};
             // console.log("This is profile", profile);
@@ -99,7 +107,7 @@ export default () => {
             //   return done(null, newUser);
             // });
           }
-        });
+        );
       });
   }));
 };
