@@ -64,11 +64,6 @@ class CreateAccount extends React.Component {
     .fail(err => this.handleError(err));
   }
 
-  facebookAuth(event) {
-    $.get('/api/auth/facebook', (err) => {
-    });
-  }
-
   render() {
     return (
       <div className="container">
@@ -128,7 +123,6 @@ class CreateAccount extends React.Component {
               </div>
             </div>
           </form>
-          
         </div>
       </div>
     );
