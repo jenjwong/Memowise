@@ -133,8 +133,8 @@ $ npm run coverage
 Opens code coverage report in browser.
 
 ## Facebook Config File
-Make sure this path exists: /src/server/config/authorizeFacebook.js
-Below is how the authorizeFacebook.js file should look:
+Make sure this path exists: /src/server/config/authorizeFacebook.js</br>
+Below is how the authorizeFacebook.js file should look.
 ```sh
 module.exports = {
   'facebookAuth' : {
@@ -144,7 +144,6 @@ module.exports = {
   },
 }; 
 ```
-Make sure this path exists: /src/server/config/authorizeFacebook.js
 Fill out the clientID, clientSecret, callbackURL in authorizeFacebook.js by going to <a href="https://developers.facebook.com/">Facebook Developer Portal</a> and creating your own app.
 
 
