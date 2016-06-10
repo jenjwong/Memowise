@@ -63,7 +63,7 @@ render(
         <Route path="/decks/:deckId/study" component={StudyDeck} onEnter={isAuthorized} />
       </Route>
     </Router> 
-    </Provider>,
+  </Provider>,
   document.getElementById('app')
 );
 
