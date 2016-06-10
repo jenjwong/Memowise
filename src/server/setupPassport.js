@@ -58,21 +58,15 @@ export default () => {
 
   },
     (token, refreshToken, profile, done) => {
-      console.log("this is profile before nextTick", profile);
       process.nextTick(function() {
-        console.log('Next tick function');
         User.findOne({ 'facebook.id' : profile.id }, function(err, user) {
-          console.log('CREATED');
           if (err) {
-            console.log('There is an error', err);
             return done(err);
           }
             
           if (user) {
-            console.log('I EXIST', user);
             return done(null, user);
           } else {
-            console.log('STARTED TO CREATE THE USER');
             return User.create({
               name: profile.name.givenName + ' ' + profile.name.familyName,
               email: profile.emails[0].value,
@@ -83,12 +77,10 @@ export default () => {
               }
             }).then(user => {
               const created = user.toObject();
-              console.log('CREATE THIS', user);
               delete created.password;
               return done(null, created);
             })
             .catch(error => {
-              console.log('THERE IS AN ERROR', error);
               return done(error);
             });
           };
