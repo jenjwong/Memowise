@@ -2,18 +2,19 @@ import User from '../models/User';
 import Levels from '../models/Levels';
 
 const updateScore = (req, res, next) => {
-  User.findOne({ _id: req.user._id }, function(err, user) {
+  User.findOne({ _id: req.user._id }, (err, user) => {
     if (err) {
       return next(err);
     }
     user.scoreTotal += req.body.rating;
-    user.save(function(err) {
-      if (err) { 
-        return next(err);
+    user.save((error) => {
+      if (error) {
+        return next(error);
       }
+      return null;
     })
-    .then(user => {
-      res.json(user.scoreTotal);
+    .then(user1 => {
+      res.json(user1.scoreTotal);
     })
     .catch(error => {
       res
@@ -21,32 +22,35 @@ const updateScore = (req, res, next) => {
         .type('json')
         .json({ error });
     });
+    return null;
   });
 };
 
 const updateLevel = (req, res, next) => {
-  Levels.findOne({ userId: req.user._id, deckId: req.body.deckId }, function(err, record) {
+  Levels.findOne({ userId: req.user._id, deckId: req.body.deckId }, (err, record) => {
     if (err) {
       return next(err);
     }
     if (record) {
       record.score += req.body.rating;
-      record.level = Math.floor(record.score/10) + 1;
+      record.level = Math.floor(record.score / 10) + 1;
     } else {
-        var record = new Levels ({
-          deckId: req.body.deckId,
-          userId: req.user._id,
-          score: req.body.rating,
-          level: 1
+      const newRecord = new Levels({
+        deckId: req.body.deckId,
+        userId: req.user._id,
+        score: req.body.rating,
+        level: 1,
       });
+      record = newRecord;
     }
 
-    record.save(function(err) {
-      if (err) { 
-        return next(err);
+    record.save((Err) => {
+      if (Err) {
+        return next(Err);
       }
-    }).then(record => {
-      res.json({ record });
+      return null;
+    }).then(Record => {
+      res.json({ Record });
     })
     .catch(error => {
       res
@@ -54,7 +58,7 @@ const updateLevel = (req, res, next) => {
         .type('json')
         .json({ error });
     });
-    
+    return null;
   });
 };
 

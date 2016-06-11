@@ -15,5 +15,5 @@ export const SIGN_OUT = 'SIGN_OUT';
 export const ERR_FAILED_REQUEST = 'ERR_FAILED_REQUEST';
 
 export const UPDATE_SCORE = 'UPDATE_SCORE';
-export const UPDATE_LEVEL= 'UPDATE_LEVEL';
+export const UPDATE_LEVEL = 'UPDATE_LEVEL';
 export const RECEIVE_RECORDS = 'RECEIVE_RECORDS';

@@ -24,8 +24,7 @@ import StudyDeck from './containers/StudyDeck';
 import CreateDeck from './containers/CreateDeck';
 import CreateCard from './containers/CreateCard';
 import Scoreboard from './containers/Scoreboard';
-import Score from './containers/Score';
-import { verifyAuthentication, fetchDecks, sendScore, checkLevel, fetchRecords } from './actions';
+import { verifyAuthentication, fetchDecks, sendScore, fetchRecords } from './actions';
 
 // services
 import Auth from './services/AuthService';
@@ -74,9 +73,8 @@ render(
 
 if (DEBUG) {
   store.subscribe(() => window.console.log(store.getState()));
-  //store.subscribe(() => console.log(store.getState()));
-  store.subscribe(() => console.log(store.getState()));
-
+  // store.subscribe(() => console.log(store.getState()));
+ // store.subscribe(() => console.log(store.getState()));
 }
 
 store.dispatch(verifyAuthentication());

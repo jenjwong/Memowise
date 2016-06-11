@@ -34,7 +34,7 @@ class StudyDeck extends React.Component {
 
   handlePlay(play, rank) {
     ReactDOM.findDOMNode(this.refs.contain).focus();
-    this.props.receiveScore(rank);
+    // this.props.receiveScore(rank);
     this.props.sendScore(rank);
     this.props.checkLevel(this.props.deck._id, rank);
     this.props.savePlay(play, rank)

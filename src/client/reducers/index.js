@@ -9,10 +9,10 @@ import {
   SIGN_OUT,
   ERR_FAILED_REQUEST,
   CREATE_DECK,
-  CREATE_CARD,
+  // CREATE_CARD,
   UPDATE_SCORE,
   UPDATE_LEVEL,
-  RECEIVE_RECORDS
+  RECEIVE_RECORDS,
 } from '../constants/actionTypes';
 
 import {
@@ -121,7 +121,7 @@ export const score = (state, action) => {
     default:
       return state || 0;
   }
-}
+};
 
 export const level = (state, action) => {
   switch (action.type) {
@@ -131,7 +131,7 @@ export const level = (state, action) => {
     default:
       return state || {};
   }
-}
+};
 
 export const records = (state, action) => {
   switch (action.type) {
@@ -141,4 +141,4 @@ export const records = (state, action) => {
     default:
       return state || {};
   }
-}
+};

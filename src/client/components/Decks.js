@@ -5,7 +5,7 @@ import { browserHistory } from 'react-router';
 import Score from '../containers/Score';
 
 
-const Decks = ({ decks, score }) => (
+const Decks = ({ decks }) => (
   <div className="container">
     <h4 className="center grey-text text-darken-4"> Decks </h4>
     <Score />
@@ -28,11 +28,11 @@ const Decks = ({ decks, score }) => (
             </div>
           </div>
         </div>
-        {decks.map((deck, idx) => { 
-          let level = store.getState().records.filter(function(record) {
-            return record.deckId === deck._id;
-          });
-          return <DeckItem key={idx} deck={deck} record={level[0]}/>
+        {decks.map((deck, idx) => {
+          const level = window.store.getState().records.filter((record) =>
+           record.deckId === deck._id
+          );
+          return <DeckItem key={idx} deck={deck} record={level[0]} />;
         }
           )}
       </div>

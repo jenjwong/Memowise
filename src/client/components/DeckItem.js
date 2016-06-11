@@ -40,7 +40,7 @@ class DeckItem extends Component {
           <div className="card-content">
             <div className="card-title grey-text text-darken-4 center">
               <strong>{this.props.deck.name}</strong>
-              <h4> Level: {this.props.record.level} </h4>
+              <h5> Level: {this.props.record.level} </h5>
             </div>
             <DeckLastPlayed date={this.state.lastPlayedAt} />
             <ProgressBar deck={this.props.deck} />
@@ -59,13 +59,13 @@ class DeckItem extends Component {
 DeckItem.propTypes = {
   deck: PropTypes.object.isRequired,
   setDeckState: PropTypes.func.isRequired,
-  record: PropTypes.object.isRequired
+  record: PropTypes.object.isRequired,
 };
 
 DeckItem.defaultProps = {
   record: {
     level: 0,
   },
-}
+};
 
 export default connect(null, mapDispatchToState)(DeckItem);

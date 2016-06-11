@@ -85,7 +85,7 @@ export const savePlay = (play, rating) => {
 export const updateScore = (score) => ({ type: types.UPDATE_SCORE, data: score  });
 export const sendScore = (rating) => {
   const payload = JSON.stringify({ rating });
-  return dispatch => (  
+  return dispatch => (
     fetch(`${url}/api/user/score`, {
       method: 'POST',
       headers: {
@@ -93,7 +93,7 @@ export const sendScore = (rating) => {
         'Content-length': payload.length,
       },
       credentials: 'same-origin',
-      body:payload,
+      body: payload,
     })
       .then(res =>  res.json())
       .then(score => {
@@ -101,9 +101,9 @@ export const sendScore = (rating) => {
       })
       .catch(err => dispatch(failedRequest(err)))
     );
-}
+};
 
-export const updateLevel = ({ record }) => ({ type: types.UPDATE_LEVEL, data: { record }});
+export const updateLevel = ({ record }) => ({ type: types.UPDATE_LEVEL, data: { record } });
 export const checkLevel = (deckId, rating) => {
   const payload = JSON.stringify({ deckId, rating });
   return dispatch => (
@@ -114,7 +114,7 @@ export const checkLevel = (deckId, rating) => {
         'Content-length': payload.length,
       },
       credentials: 'same-origin',
-      body:payload,
+      body: payload,
     })
     .then(res => res.json())
     .then(({ record }) => {
@@ -122,21 +122,17 @@ export const checkLevel = (deckId, rating) => {
     })
     .catch(err => dispatch(failedRequest(err)))
   );
-}
+};
 
 export const receiveRecords = (records) => ({ type: types.RECEIVE_RECORDS, data: records });
-export const fetchRecords = () => {
-  return dispatch => (
+export const fetchRecords = () => (
+ dispatch => (
     fetch(`${url}/api/user/fetchRecords`, {
       credentials: 'same-origin',
     })
-    .then(res => {
-      return res.json();
-    })
-    .then( (records) => {
-      dispatch(receiveRecords(records));
-    })
+    .then(res => res.json())
+    .then((records) => dispatch(receiveRecords(records)))
     .catch(err => dispatch(failedRequest(err)))
   )
-}
+);
 
