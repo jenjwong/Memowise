@@ -3,7 +3,12 @@
 [Memowise](http://memowise.xyz/) is an awesome flash card app!
 
 ## Team
-
+Team 1:
+- __Product Owner__: Alex Wong
+- __Scrum Master__: Matt Vargeson
+- __Development Team Members__: Peter Chim, David Valles
+ 
+ Team 2:
 - __Product Owner__: David Doan
 - __Scrum Master__: Cathy Lee
 - __Development Team Members__: Ashwin Diwan, Jen Wong
