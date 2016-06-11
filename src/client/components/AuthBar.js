@@ -17,7 +17,7 @@ const AuthBar = ({ user, mobile }) => {
         </li>
         <li>
           {
-            name ?
+            name ?           
               <Link to="/sign-out">Sign Out</Link> :
               <Link to="/create-account">Create Account</Link>
           }

@@ -10,6 +10,7 @@ const Toolbar = () => (
           <Link to="/" id="logo-container" className="brand-logo">
             <i className="material-icons">home</i>
           </Link>
+          <a href="/scoreboard">Scoreboard</a>
           <AuthBar />
           <AuthBar mobile />
           <a href="#" data-activates="nav-mobile" className="button-collapse">

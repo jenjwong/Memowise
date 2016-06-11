@@ -23,6 +23,7 @@ import Dashboard from './containers/Dashboard';
 import StudyDeck from './containers/StudyDeck';
 import CreateDeck from './containers/CreateDeck';
 import CreateCard from './containers/CreateCard';
+import Scoreboard from './containers/Scoreboard';
 import { verifyAuthentication, fetchDecks } from './actions';
 
 // services
@@ -62,6 +63,7 @@ render(
         <Route path="/create-card" component={CreateCard} onEnter={isAuthorized} />
         <Route path="/create-deck" component={CreateDeck} onEnter={isAuthorized} />
         <Route path="/decks/:deckId/study" component={StudyDeck} onEnter={isAuthorized} />
+        <Route path="/scoreboard" component={Scoreboard} onEnter={isAuthorized} />
       </Route>
     </Router>
   </Provider>,
