@@ -77,17 +77,15 @@ const signOut = (req, res) => {
   res.redirect('/');
 };
 
-//Facebook sign in 
+// Facebook sign in
 const authFacebook = (req, res, next) => {
-  console.log('Start FB Auth');
-  passport.authenticate('facebook', { scope : 'email'})(req, res, next);
+  passport.authenticate('facebook', { scope: 'email' })(req, res, next);
 };
 
 const afterAuthFB = (req, res, next) => {
-  console.log('after FB auth');
   passport.authenticate('facebook', {
-    successRedirect : '/dashboard',
-    failureRedirect : '/sign-in'
+    successRedirect: '/dashboard',
+    failureRedirect: '/sign-in',
   })(req, res, next);
 };
 

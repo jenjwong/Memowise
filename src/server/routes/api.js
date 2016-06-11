@@ -5,7 +5,6 @@ import decks from '../controllers/Decks';
 import plays from '../controllers/Plays';
 import auth from '../controllers/Auth';
 import createCard from '../controllers/Create';
-import passport from 'passport';
 
 const router = new Router();
 
@@ -34,7 +33,7 @@ router.route('/api/auth/verify').get(auth.verify);
 router.route('/api/auth/sign-out').get(auth.signOut);
 router.route('/api/auth/check-authorized').get(auth.checkAuthorized);
 
-/* 
+/*
  * Facebook Auth
  */
 router.route('/api/auth/facebook').get(auth.authFacebook);

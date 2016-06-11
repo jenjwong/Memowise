@@ -2,6 +2,7 @@
   "extends": "airbnb",
   "rules": {
     "no-multi-spaces": [0],
+    "max-len": [0],
     "no-underscore-dangle": [0]
   },
   "parserOptions":{

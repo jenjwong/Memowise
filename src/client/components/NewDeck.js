@@ -5,7 +5,8 @@ import $ from 'jquery';
 class NewDeck extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   promisePost(name) {
@@ -25,7 +26,7 @@ class NewDeck extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     let name = this.refs.Name.value.trim();
-    name = { name: name };
+    name = { name };
     this.refs.Name.value = '';
     this.promisePost(name)
     .then(
@@ -35,18 +36,18 @@ class NewDeck extends React.Component {
       }
     )
     .catch(
-      err => console.log(err)
+      err => window.console.log(err)
     );
   }
 
   render() {
     return (
       <div>
-        <form className="new-form" onSubmit={this.handleSubmit.bind(this)}>
-        <input type="text" placeholder="Deck Name" ref="Name" />
-        <button className="btn cyan lighten-3" >
+        <form className="new-form" onSubmit={this.handleSubmit}>
+          <input type="text" placeholder="Deck Name" ref="Name" />
+          <button className="btn cyan lighten-3" >
           Create New Deck
-        </button>
+          </button>
         </form>
       </div>
     );

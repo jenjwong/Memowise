@@ -68,7 +68,7 @@ render(
 );
 
 if (DEBUG) {
-  store.subscribe(() => console.log(store.getState()));
+  store.subscribe(() => window.console.log(store.getState()));
 }
 
 store.dispatch(verifyAuthentication());
