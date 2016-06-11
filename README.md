@@ -6,7 +6,7 @@
 
 - __Product Owner__: David Doan
 - __Scrum Master__: Cathy Lee
-- __Development Team Members__: Ashwin Diwan, Jen Wong
+- __Development Team Members__: Ashwini Jogwar, Jen Wong
 
 ## Table of Contents
 
