@@ -50,7 +50,7 @@ const updateLevel = (req, res, next) => {
     }).then(record => {
       //console.log ('record.score is : ', record.score);
       //console.log ('record.level is : ', record.level);
-      res.json(record.level);
+      res.json({ record });
     })
     .catch(error => {
       res

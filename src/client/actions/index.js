@@ -103,6 +103,7 @@ export const sendScore = (rating) => {
     );
 }
 
+//export const updateLevel = (record) => ({ })
 export const checkLevel = (deckId, rating) => {
   const payload = JSON.stringify({ deckId, rating });
   return dispatch => (
@@ -116,7 +117,11 @@ export const checkLevel = (deckId, rating) => {
       body:payload,
     })
     .then(res => res.json())
-    //.then((level) => dispatch())
-  )
+    .then(({ record }) => {
+      console.log('record on client : ', record);
+      dispatch(updateLevel({ record }));
+    })
+    .catch(err => dispatch(failedRequest(err)))
+  );
 }
 
