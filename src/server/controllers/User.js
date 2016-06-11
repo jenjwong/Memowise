@@ -31,18 +31,33 @@ const updateLevel = (req, res, next) => {
     }
     if (record) {
       record.score += req.body.rating;
-      console.log ('record is - ', record);
-      record.level = Math.floor(score/10);
-      record.save(function(err) {
-        if (err) { 
-          return next(err);
-        }
-      });
+      //console.log ('record found - ', record);
+      record.level = Math.floor(record.score/10) + 1;
     } else {
-      
-      console.log('new record created');
+        var record = new Levels ({
+          deckId: req.body.deckId,
+          userId: req.user._id,
+          score: req.body.rating,
+          level: 1
+      });
+      //console.log('new record created', record);
     }
-    
+
+    record.save(function(err) {
+      if (err) { 
+        return next(err);
+      }
+    }).then(record => {
+      //console.log ('record.score is : ', record.score);
+      //console.log ('record.level is : ', record.level);
+      res.json(record.level);
+    })
+    .catch(error => {
+      res
+        .status(500)
+        .type('json')
+        .json({ error });
+    });
     
   });
 };

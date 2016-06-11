@@ -104,7 +104,6 @@ export const sendScore = (rating) => {
 }
 
 export const checkLevel = (deckId, rating) => {
-  //console.log ('deckId is - ', deckId);
   const payload = JSON.stringify({ deckId, rating });
   return dispatch => (
     fetch(`${url}/api/user/levels`, {
@@ -116,8 +115,8 @@ export const checkLevel = (deckId, rating) => {
       credentials: 'same-origin',
       body:payload,
     })
-   // .then(res => res.json())
-   // .then(() => dispatch())
+    .then(res => res.json())
+    //.then((level) => dispatch())
   )
 }
 
