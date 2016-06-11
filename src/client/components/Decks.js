@@ -31,8 +31,7 @@ const Decks = ({ decks }) => (
            record.deckId === deck._id
           );
           return <DeckItem key={idx} deck={deck} record={level[0]} />;
-        }
-          )}
+        })}
       </div>
     </div>
   </div>
