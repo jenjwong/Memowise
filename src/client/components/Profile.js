@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import moment from 'moment';
+import Score from '../containers/Score';
 
 const Profile = ({ user }) => {
   if (!user) return null;
@@ -10,6 +11,7 @@ const Profile = ({ user }) => {
       <div>{user.email}</div>
       <div>Member Since: {moment(user.createdAt).calendar()}</div>
       <div><small className="grey-text">{user._id}</small></div>
+      <Score />
     </div>
   );
 };

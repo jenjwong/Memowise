@@ -5,9 +5,16 @@ import decks from '../controllers/Decks';
 import plays from '../controllers/Plays';
 import auth from '../controllers/Auth';
 import createCard from '../controllers/Create';
+import user from '../controllers/User';
 
 const router = new Router();
 
+/*
+ * User
+ */
+router.route('/api/user/score').post(auth.checkAuthServer, user.updateScore);
+router.route('/api/user/levels').post(auth.checkAuthServer, user.updateLevel);
+router.route('/api/user/fetchRecords').get(auth.checkAuthServer, user.fetchRecords);
 /*
  * Decks
  */

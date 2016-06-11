@@ -24,7 +24,7 @@ import StudyDeck from './containers/StudyDeck';
 import CreateDeck from './containers/CreateDeck';
 import CreateCard from './containers/CreateCard';
 import Scoreboard from './containers/Scoreboard';
-import { verifyAuthentication, fetchDecks } from './actions';
+import { verifyAuthentication, fetchDecks, sendScore, fetchRecords } from './actions';
 
 // services
 import Auth from './services/AuthService';
@@ -42,6 +42,7 @@ const isAuthorized = (nextState, replace, next) => {
     .then(check => {
       if (check.loggedIn) {
         store.dispatch(fetchDecks());
+        store.dispatch(fetchRecords());
         next();
       } else {
         replace('/sign-in');
@@ -76,6 +77,8 @@ if (DEBUG) {
 
 store.dispatch(verifyAuthentication());
 store.dispatch(fetchDecks());
+store.dispatch(sendScore(0));
+store.dispatch(fetchRecords());
 
 // just for inspection
 window.store = store;

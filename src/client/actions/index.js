@@ -67,7 +67,6 @@ export const flipCard = () => ({ type: types.FLIP_CARD });
 
 export const savePlay = (play, rating) => {
   const payload = JSON.stringify({ ...play, rating });
-
   return dispatch => (
     fetch(`${url}/api/play`, {
       method: 'POST',
@@ -82,3 +81,58 @@ export const savePlay = (play, rating) => {
     .catch(err => dispatch(failedRequest(err)))
   );
 };
+
+export const updateScore = (score) => ({ type: types.UPDATE_SCORE, data: score  });
+export const sendScore = (rating) => {
+  const payload = JSON.stringify({ rating });
+  return dispatch => (
+    fetch(`${url}/api/user/score`, {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+        'Content-length': payload.length,
+      },
+      credentials: 'same-origin',
+      body: payload,
+    })
+      .then(res =>  res.json())
+      .then(score => {
+        dispatch(updateScore(score));
+      })
+      .catch(err => dispatch(failedRequest(err)))
+    );
+};
+
+export const updateLevel = ({ record }) => ({ type: types.UPDATE_LEVEL, data: { record } });
+export const checkLevel = (deckId, rating) => {
+  const payload = JSON.stringify({ deckId, rating });
+  return dispatch => (
+    fetch(`${url}/api/user/levels`, {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+        'Content-length': payload.length,
+      },
+      credentials: 'same-origin',
+      body: payload,
+    })
+    .then(res => res.json())
+    .then(({ record }) => {
+      dispatch(updateLevel({ record }));
+    })
+    .catch(err => dispatch(failedRequest(err)))
+  );
+};
+
+export const receiveRecords = (records) => ({ type: types.RECEIVE_RECORDS, data: records });
+export const fetchRecords = () => (
+ dispatch => (
+    fetch(`${url}/api/user/fetchRecords`, {
+      credentials: 'same-origin',
+    })
+    .then(res => res.json())
+    .then((records) => dispatch(receiveRecords(records)))
+    .catch(err => dispatch(failedRequest(err)))
+  )
+);
+

@@ -1,10 +1,12 @@
 import React, { PropTypes } from 'react';
 import DeckItem from './DeckItem';
 import { browserHistory } from 'react-router';
+import Score from '../containers/Score';
 
 const Decks = ({ decks }) => (
   <div className="container">
     <h4 className="center grey-text text-darken-4"> Decks </h4>
+    <Score />
     <div className="card-list">
       <div className="card-columns">
         {decks.map((deck, idx) => <DeckItem key={idx} deck={deck} />)}
@@ -24,6 +26,12 @@ const Decks = ({ decks }) => (
             </div>
           </div>
         </div>
+        {decks.map((deck, idx) => {
+          const level = window.store.getState().records.filter((record) =>
+           record.deckId === deck._id
+          );
+          return <DeckItem key={idx} deck={deck} record={level[0]} />;
+        })}
       </div>
     </div>
   </div>
