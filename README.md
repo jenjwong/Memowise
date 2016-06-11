@@ -8,7 +8,7 @@ Team 1:
 - __Scrum Master__: Matt Vargeson
 - __Development Team Members__: Peter Chim, David Valles
  
- Team 2:
+Team 2:
 - __Product Owner__: David Doan
 - __Scrum Master__: Cathy Lee
 - __Development Team Members__: Ashwin Diwan, Jen Wong
