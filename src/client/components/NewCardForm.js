@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import $ from 'jquery';
 
 class NewCardForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-    };
+
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   clearForm() {
@@ -16,38 +16,44 @@ class NewCardForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    let question = this.refs.Question.value.trim();
-    let answer = this.refs.Answer.value.trim();
-    let explanation = this.refs.Explantion.value.trim();
+    const question = this.refs.Question.value.trim();
+    const answer = this.refs.Answer.value.trim();
+    const explanation = this.refs.Explantion.value.trim();
 
-    let newCard = {
-      question: question,
-      answer: answer,
-      explanation: explanation,
+    const newCard = {
+      question,
+      answer,
+      explanation,
       deckId: this.props.createDeck,
     };
 
     this.clearForm();
 
     $.post('/api/create-card', newCard, (res) => {
+      // implement update of redux-store after successful post
+      window.console.log(res);
     })
     .fail(err => this.handleError(err));
   }
 
   render() {
     return (
-      <form className="new-form" onSubmit={this.handleSubmit.bind(this)}>
-       <input type="text" placeholder="Question" ref="Question" />
-       <input type="text" placeholder="Answer" ref="Answer" />
-       <input type="text" placeholder="Explantion" ref="Explantion" />
-       <input type="submit" value="Post" />
-       </form>
+      <form className="new-form" onSubmit={this.handleSubmit}>
+        <input type="text" placeholder="Question" ref="Question" />
+        <input type="text" placeholder="Answer" ref="Answer" />
+        <input type="text" placeholder="Explantion" ref="Explantion" />
+        <input type="submit" value="Post" />
+      </form>
     );
   }
 }
 
 NewCardForm.defaultProps = {
   createDeck: '',
+};
+
+NewCardForm.propTypes = {
+  createDeck: PropTypes.string.isRequired,
 };
 
 export default NewCardForm;

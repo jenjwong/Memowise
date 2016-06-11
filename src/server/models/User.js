@@ -20,8 +20,8 @@ const UserSchema = new mongoose.Schema({
   },
   facebook: {
     id: String,
-    token: String
-  }
+    token: String,
+  },
 }, { timestamps: true });
 
 UserSchema.pre('save', function hashPassword(next) {

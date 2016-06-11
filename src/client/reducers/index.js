@@ -9,7 +9,7 @@ import {
   SIGN_OUT,
   ERR_FAILED_REQUEST,
   CREATE_DECK,
-  CREATE_CARD
+  // CREATE_CARD,
 } from '../constants/actionTypes';
 
 import {

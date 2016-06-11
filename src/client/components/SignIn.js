@@ -91,8 +91,9 @@ class SignIn extends React.Component {
           className="valign-wrapper fb-like center-btn"
           data-share="true"
           data-width="450"
-          data-show-faces="true">
-            <a className="valign center-block fb-button btn-large btn waves-effect waves-#0d47a1 blue darken-4" href="/api/auth/facebook">Login with Facebook</a>
+          data-show-faces="true"
+        >
+          <a className="valign center-block fb-button btn-large btn waves-effect waves-#0d47a1 blue darken-4" href="/api/auth/facebook">Login with Facebook</a>
         </div>
       </div>
     );

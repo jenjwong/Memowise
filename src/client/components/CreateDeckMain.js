@@ -1,18 +1,15 @@
-import React, {Component} from 'react';
+import React, { PropTypes } from 'react';
 import NewCardForm from './NewCardForm';
 
-  class CreateDeckMain extends React.Component {
-    constructor(props) {
-      super(props);
-    }
-
-    render() {
-      return (
-        <div>
-          <NewCardForm createDeck={this.props.createDeck} />
-        </div>
-      );
-    }
+const CreateDeckMain = ({ createDeck }) => (
+  <div>
+    <NewCardForm createDeck={createDeck} />
   }
+  </div>
+);
+
+CreateDeckMain.propTypes = {
+  createDeck: PropTypes.string.isRequired,
+};
 
 export default CreateDeckMain;

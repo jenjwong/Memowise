@@ -49,44 +49,42 @@ export default () => {
     }));
 
   passport.use(new FacebookStrategy({
-    
-    clientID : authorizeFacebook.facebookAuth.clientID,
-    clientSecret : authorizeFacebook.facebookAuth.clientSecret,
-    callbackURL : authorizeFacebook.facebookAuth.callbackURL,
+
+    clientID: authorizeFacebook.facebookAuth.clientID,
+    clientSecret: authorizeFacebook.facebookAuth.clientSecret,
+    callbackURL: authorizeFacebook.facebookAuth.callbackURL,
     // passReqToCallback : true,
-    profileFields: ['id', 'email', 'name'] 
+    profileFields: ['id', 'email', 'name'],
 
   },
     (token, refreshToken, profile, done) => {
-      process.nextTick(function() {
-        User.findOne({ 'facebook.id' : profile.id }, function(err, user) {
+      process.nextTick(() => {
+        User.findOne({ 'facebook.id': profile.id }, (err, user) => {
           if (err) {
             return done(err);
           }
-            
+
           if (user) {
             return done(null, user);
-          } else {
-            return User.create({
-              name: profile.name.givenName + ' ' + profile.name.familyName,
-              email: profile.emails[0].value,
-              password: 'thisiforfacebooklogin',
-              facebook: {
-                id: profile.id,
-                token: token
-              }
-            }).then(user => {
-              const created = user.toObject();
-              delete created.password;
-              return done(null, created);
-            })
-            .catch(error => {
-              return done(error);
-            });
-          };
           }
-        );
+
+          return User.create({
+            name: `${profile.name.givenName}  ${profile.name.familyName}`,
+            email: profile.emails[0].value,
+            password: 'thisiforfacebooklogin',
+            facebook: {
+              id: profile.id,
+              token,
+            },
+          }).then(savedUser => {
+            const created = savedUser.toObject();
+            delete created.password;
+            return done(null, created);
+          })
+          .catch(error => done(error));
+        });
       });
-  }));
+    }
+  ));
 };
 
