@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 const Score = ({ score }) => {
   return (
     <div>
-       Current Score : {score} 
+       <h5 > <center> Total Score : {score} </center> </h5> 
     </div>
   );
 };
