@@ -11,6 +11,8 @@ import {
   CREATE_DECK,
   CREATE_CARD,
   UPDATE_SCORE,
+  UPDATE_LEVEL,
+  RECEIVE_RECORDS
 } from '../constants/actionTypes';
 
 import {
@@ -118,5 +120,25 @@ export const score = (state, action) => {
     }
     default:
       return state || 0;
+  }
+}
+
+export const level = (state, action) => {
+  switch (action.type) {
+    case UPDATE_LEVEL: {
+      return action.data;
+    }
+    default:
+      return state || {};
+  }
+}
+
+export const records = (state, action) => {
+  switch (action.type) {
+    case RECEIVE_RECORDS: {
+      return action.data;
+    }
+    default:
+      return state || {};
   }
 }

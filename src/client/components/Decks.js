@@ -27,6 +27,14 @@ const Decks = ({ decks, score }) => (
             </div>
           </div>
         </div>
+        {decks.map((deck, idx) => { 
+          let level = store.getState().records.filter(function(record) {
+            return record.deckId === deck._id;
+          });
+          console.log(level, 'level');
+          return <DeckItem key={idx} deck={deck} record={level[0]}/>
+        }
+          )}
       </div>
     </div>
     <Score />

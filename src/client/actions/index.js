@@ -125,3 +125,21 @@ export const checkLevel = (deckId, rating) => {
   );
 }
 
+export const receiveRecords = (records) => ({ type: types.RECEIVE_RECORDS, data: records });
+export const fetchRecords = () => {
+  return dispatch => (
+    fetch(`${url}/api/user/fetchRecords`, {
+      credentials: 'same-origin',
+    })
+    .then(res => {
+      console.log ('in the promise');
+      return res.json();
+    })
+    .then( (records) => {
+      console.log ('records : ', records);
+      dispatch(receiveRecords(records));
+    })
+    .catch(err => dispatch(failedRequest(err)))
+  )
+}
+
