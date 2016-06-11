@@ -24,7 +24,6 @@ const Decks = ({ decks }) => (
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </div>
