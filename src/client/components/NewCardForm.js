@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import $ from 'jquery';
+import { browserHistory } from 'react-router';
 
 class NewCardForm extends React.Component {
   constructor(props) {
@@ -24,7 +25,7 @@ class NewCardForm extends React.Component {
       question,
       answer,
       explanation,
-      deckId: this.props.createDeck,
+      deckId: this.props.createDeck.deckId,
     };
 
     this.clearForm();
@@ -38,22 +39,29 @@ class NewCardForm extends React.Component {
 
   render() {
     return (
-      <form className="new-form" onSubmit={this.handleSubmit}>
+      <form className="new-form flashcard-front" onSubmit={this.handleSubmit}>
+        <div className="flashcard-close">
+          <i className="material-icons" onClick={() => browserHistory.push('/dashboard')}>close</i>
+        </div>
         <input type="text" placeholder="Question" ref="Question" />
         <input type="text" placeholder="Answer" ref="Answer" />
         <input type="text" placeholder="Explantion" ref="Explantion" />
-        <input type="submit" value="Post" />
+        <div className="flashcard-buttons">
+          <button className="btn btn-large cyan lighten-3" onClick={this.handleSubmit}>
+            Save Card
+          </button>
+        </div>
       </form>
     );
   }
 }
 
 NewCardForm.defaultProps = {
-  createDeck: '',
+  createDeck: { deckId: '', deckName: '' },
 };
 
 NewCardForm.propTypes = {
-  createDeck: PropTypes.string.isRequired,
+  createDeck: PropTypes.object.isRequired,
 };
 
 export default NewCardForm;

@@ -32,7 +32,7 @@ class NewDeck extends React.Component {
     .then(
       res => {
         browserHistory.push('/create-card');
-        return this.props.createDeck(res._id);
+        return this.props.createDeck(res._id, name.name);
       }
     )
     .catch(
@@ -42,13 +42,17 @@ class NewDeck extends React.Component {
 
   render() {
     return (
-      <div>
-        <form className="new-form" onSubmit={this.handleSubmit}>
-          <input type="text" placeholder="Deck Name" ref="Name" />
-          <button className="btn cyan lighten-3" >
-          Create New Deck
-          </button>
-        </form>
+      <div className="container">
+        <div className="medium center">
+          <div className="flashcard flashcard-front">
+            <form className="new-form" onSubmit={this.handleSubmit}>
+              <input type="text" placeholder="Deck Name" ref="Name" />
+              <button className="btn cyan lighten-3" >
+              Create New Deck
+              </button>
+            </form>
+          </div>
+        </div>
       </div>
     );
   }

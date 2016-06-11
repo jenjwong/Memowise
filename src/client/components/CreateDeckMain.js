@@ -3,13 +3,17 @@ import NewCardForm from './NewCardForm';
 
 const CreateDeckMain = ({ createDeck }) => (
   <div>
-    <NewCardForm createDeck={createDeck} />
-  }
+    <h2 className="center grey-text text-darken-4">{createDeck.deckName}</h2>
+    <div className="medium center container">
+      <div className="flashcard flashcard-front">
+        <NewCardForm createDeck={createDeck} />
+      </div>
+    </div>
   </div>
 );
 
 CreateDeckMain.propTypes = {
-  createDeck: PropTypes.string.isRequired,
+  createDeck: PropTypes.object.isRequired,
 };
 
 export default CreateDeckMain;
