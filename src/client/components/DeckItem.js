@@ -1,19 +1,12 @@
 import React, { Component, PropTypes } from 'react';
-import { selectDeck, checkLevel, updateLevel } from '../actions';
+import { selectDeck } from '../actions';
 import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
 import ProgressBar from './ProgressBar';
 import DeckLastPlayed from './DeckLastPlayed';
 
-const mapStateToProps = ({ level }) => ({ level });
-
-// const mapDispatchToProps = (dispatch) => ({
-// });
-
 const mapDispatchToState = (dispatch) => ({
   setDeckState: (deck) => dispatch(selectDeck(deck)),
-  checkLevel: (deckId, rating) => dispatch(updateLevel(level)),
-  updateLevel: ({ level }) => dispatch(updateLevel({ level })),
 });
 
 class DeckItem extends Component {
@@ -33,7 +26,6 @@ class DeckItem extends Component {
           lastPlayedAt: (play && play.createdAt) || '',
         });
       });
-      checkLevel(this.props.deck._id, 0);
   }
 
   chooseDeckToStudy() {
@@ -67,8 +59,6 @@ class DeckItem extends Component {
 DeckItem.propTypes = {
   deck: PropTypes.object.isRequired,
   setDeckState: PropTypes.func.isRequired,
-  checkLevel: PropTypes.func.isRequired,
-  level: PropTypes.object.isRequired,
   record: PropTypes.object.isRequired
 };
 
@@ -78,6 +68,4 @@ DeckItem.defaultProps = {
   },
 }
 
-// export default connect(null, mapDispatchToState)(DeckItem);
-// export default connect(mapStateToProps, mapDispatchToProps)(DeckItem);
-export default connect(mapStateToProps, mapDispatchToState)(DeckItem);
+export default connect(null, mapDispatchToState)(DeckItem);

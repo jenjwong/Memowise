@@ -118,7 +118,6 @@ export const checkLevel = (deckId, rating) => {
     })
     .then(res => res.json())
     .then(({ record }) => {
-      console.log('record on client : ', record);
       dispatch(updateLevel({ record }));
     })
     .catch(err => dispatch(failedRequest(err)))
@@ -132,11 +131,9 @@ export const fetchRecords = () => {
       credentials: 'same-origin',
     })
     .then(res => {
-      console.log ('in the promise');
       return res.json();
     })
     .then( (records) => {
-      console.log ('records : ', records);
       dispatch(receiveRecords(records));
     })
     .catch(err => dispatch(failedRequest(err)))

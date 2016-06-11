@@ -31,7 +31,6 @@ const updateLevel = (req, res, next) => {
     }
     if (record) {
       record.score += req.body.rating;
-      console.log ('record found - ', record);
       record.level = Math.floor(record.score/10) + 1;
     } else {
         var record = new Levels ({
@@ -40,7 +39,6 @@ const updateLevel = (req, res, next) => {
           score: req.body.rating,
           level: 1
       });
-      console.log('new record created', record);
     }
 
     record.save(function(err) {
@@ -48,8 +46,6 @@ const updateLevel = (req, res, next) => {
         return next(err);
       }
     }).then(record => {
-      console.log ('record.score is : ', record.score);
-      console.log ('record.level is : ', record.level);
       res.json({ record });
     })
     .catch(error => {
@@ -65,7 +61,6 @@ const updateLevel = (req, res, next) => {
 const fetchRecords = (req, res) => {
   Levels.find({ userId: req.user._id })
   .then((records) => {
-    console.log('records : ', records);
     res
       .status(200)
       .type('json')
