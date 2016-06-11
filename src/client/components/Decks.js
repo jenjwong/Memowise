@@ -1,9 +1,7 @@
 import React, { PropTypes } from 'react';
 import DeckItem from './DeckItem';
 import { browserHistory } from 'react-router';
-
 import Score from '../containers/Score';
-
 
 const Decks = ({ decks }) => (
   <div className="container">
