@@ -40,6 +40,7 @@ const isAuthorized = (nextState, replace, next) => {
   Auth.checkAuthorized()
     .then(check => {
       if (check.loggedIn) {
+        store.dispatch(fetchDecks());
         next();
       } else {
         replace('/sign-in');
