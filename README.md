@@ -3,10 +3,15 @@
 [Memowise](http://memowise.xyz/) is an awesome flash card app!
 
 ## Team
-
+Team 1:
 - __Product Owner__: Alex Wong
 - __Scrum Master__: Matt Vargeson
 - __Development Team Members__: Peter Chim, David Valles
+ 
+Team 2:
+- __Product Owner__: David Doan
+- __Scrum Master__: Cathy Lee
+- __Development Team Members__: Ashwin Diwan, Jen Wong
 
 ## Table of Contents
 
@@ -131,6 +136,20 @@ $ npm run test
 $ npm run coverage
 ```
 Opens code coverage report in browser.
+
+## Facebook Config File
+Make sure this path exists: /src/server/config/authorizeFacebook.js</br>
+Below is how the authorizeFacebook.js file should look.
+```sh
+module.exports = {
+  'facebookAuth' : {
+      'clientID'      : 'your-secret-clientID-here', // your App ID
+      'clientSecret'  : 'your-client-secret-here', // your App Secret
+      'callbackURL'   : 'http://localhost:3000/auth/facebook/callback'
+  },
+}; 
+```
+Fill out the clientID, clientSecret, callbackURL in authorizeFacebook.js by going to <a href="https://developers.facebook.com/">Facebook Developer Portal</a> and creating your own app.
 
 ## Roadmap
 

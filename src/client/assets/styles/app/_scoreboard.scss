@@ -1,0 +1,33 @@
+img.user-icon {
+  width: 90px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.collection-item {
+  margin-bottom: 10px;
+}
+
+.title {
+  p {
+    font-size: 20px;
+  }
+}
+
+.user-stats {
+  display: inline-block;
+  padding-left: 15px;
+  vertical-align: top;
+  padding-top: 23px;
+}
+
+.score-collection {
+  width: 400px;
+  margin: 0 auto;
+}
+
+.scoreboard-link {
+  float: right;
+  padding-left: 15px;
+  padding-right: 15px;
+}
