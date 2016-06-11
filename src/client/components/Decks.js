@@ -9,7 +9,12 @@ const Decks = ({ decks }) => (
     <Score />
     <div className="card-list">
       <div className="card-columns">
-        {decks.map((deck, idx) => <DeckItem key={idx} deck={deck} />)}
+        {decks.map((deck, idx) => {
+          const level = window.store.getState().records.filter((record) =>
+           record.deckId === deck._id
+          );
+          return <DeckItem key={idx} deck={deck} record={level[0]} />;
+        })}
         <div className="new-deck-item">
           <div className="card-item">
             <div className="card-panel hoverable">
@@ -26,12 +31,6 @@ const Decks = ({ decks }) => (
             </div>
           </div>
         </div>
-        {decks.map((deck, idx) => {
-          const level = window.store.getState().records.filter((record) =>
-           record.deckId === deck._id
-          );
-          return <DeckItem key={idx} deck={deck} record={level[0]} />;
-        })}
       </div>
     </div>
   </div>
