@@ -103,7 +103,7 @@ export const sendScore = (rating) => {
     );
 }
 
-//export const updateLevel = (record) => ({ })
+export const updateLevel = ({ record }) => ({ type: types.UPDATE_LEVEL, data: { record }});
 export const checkLevel = (deckId, rating) => {
   const payload = JSON.stringify({ deckId, rating });
   return dispatch => (
