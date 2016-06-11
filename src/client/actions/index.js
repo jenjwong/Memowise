@@ -26,7 +26,7 @@ export const cancelAuthentication = () => (
 
 export const receiveDecks = decks => ({ type: types.RECEIVE_DECKS, data: decks });
 
-export const createDeck = deckId => ({ type: types.CREATE_DECK, data: deckId });
+export const createDeck = (deckId, deckName) => ({ type: types.CREATE_DECK, data: { deckId, deckName } });
 
 export const selectDeck = deck => ({ type: types.SELECT_DECK, data: deck });
 

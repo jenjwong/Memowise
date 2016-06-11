@@ -5,7 +5,7 @@ import { createDeck } from '../actions';
 const mapStateToProps = ({ play }) => ({ play });
 
 const mapDispatchToProps = (dispatch) => ({
-  createDeck: (deckId) => dispatch(createDeck(deckId)),
+  createDeck: (deckId, deckName) => dispatch(createDeck(deckId, deckName)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewDeck);
