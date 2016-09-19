@@ -1,6 +1,8 @@
 # Memowise 
 
-[Memowise](http://memowise.xyz/) is a gamified flashcards app to improve memory and master new concepts. Test your skills at http://www.memowise.xyz
+[Memowise](http://memowise.xyz/) is a gamified flashcards app to improve memory and master new concepts. 
+
+![](https://github.com/jenjwong/Memowise/blob/master/documentation/memoise.png)
 
 ## Team
 
