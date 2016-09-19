@@ -1,12 +1,13 @@
 # Memowise 
 
-[Memowise](http://memowise.xyz/) is an awesome flash card app!
+[Memowise](http://memowise.xyz/) is a gamified flashcards app to improve memory and master new concepts. Test your skills at http://www.memowise.xyz
 
 ## Team
 
 - __Product Owner__: David Doan
 - __Scrum Master__: Cathy Lee
-- __Development Team Members__: Ashwini Jogwar, Jen Wong
+- __Software Engineer__: Ashwini Jogwar
+- __Software Engineer__: Jen Wong
 
 ## Table of Contents
 
