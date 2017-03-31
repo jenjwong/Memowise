@@ -1,11 +1,23 @@
 .flashcard {
   padding-bottom: 30px;
+  position: relative;
 
   &-close {
     text-align: right;
     padding-right: 30px;
     padding-top: 30px;
 
+    i {
+      cursor: pointer;
+    }
+  }
+
+  &-controls {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    padding-right: 27px;
+    padding-bottom: 5px;
     i {
       cursor: pointer;
     }
@@ -34,4 +46,34 @@
       margin: 0 10px;
     }
   }
+}
+
+.flash-container:focus{
+    outline: none !important;
+    box-shadow: 0 0 0px;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  opacity: 0.6;
+  color: #fff;
+  border-radius: 6px;
+  padding: 5px 0;
+  
+  /* Position of the tooltip */
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+  left: 50%;
+  margin-left: -70px; 
+}
+
+.span-text{
+  vertical-align: super;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
 }

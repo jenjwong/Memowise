@@ -8,6 +8,11 @@ import {
   SIGN_IN,
   SIGN_OUT,
   ERR_FAILED_REQUEST,
+  CREATE_DECK,
+  // CREATE_CARD,
+  UPDATE_SCORE,
+  UPDATE_LEVEL,
+  RECEIVE_RECORDS,
 } from '../constants/actionTypes';
 
 import {
@@ -22,6 +27,16 @@ export const decks = (state, action) => {
     }
     default:
       return state || [];
+  }
+};
+
+export const createDeck = (state, action) => {
+  switch (action.type) {
+    case CREATE_DECK: {
+      return action.data || state;
+    }
+    default:
+      return state || {};
   }
 };
 
@@ -92,6 +107,36 @@ export const error = (state, action) => {
   switch (action.type) {
     case ERR_FAILED_REQUEST: {
       return action.data || state;
+    }
+    default:
+      return state || {};
+  }
+};
+
+export const score = (state, action) => {
+  switch (action.type) {
+    case UPDATE_SCORE: {
+      return action.data;
+    }
+    default:
+      return state || 0;
+  }
+};
+
+export const level = (state, action) => {
+  switch (action.type) {
+    case UPDATE_LEVEL: {
+      return action.data;
+    }
+    default:
+      return state || {};
+  }
+};
+
+export const records = (state, action) => {
+  switch (action.type) {
+    case RECEIVE_RECORDS: {
+      return action.data;
     }
     default:
       return state || {};
